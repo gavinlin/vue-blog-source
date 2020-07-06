@@ -1,65 +1,74 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        blog
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
+  <div>
+    <nav class="navbar navbar-light bg-light mb-4">
+      <a class="navbar-brand" href="#">Blog</a>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div
+          v-for="article in articles"
+          :key="article.slug"
+          class="col-md-12 mb-4"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+          <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
+            <div class="mb-4">
+              <h3>{{ article.title }}</h3>
+            </div>
+          </NuxtLink>
+          <div class="mb-4">
+            <p class="meta">
+              <span class="mr-2">
+                <i class="fa fa-calendar"></i>
+                {{ formateDate(article.createdAt) }}
+              </span>
+              <span>
+                <i class="fa fa-folder-o"></i>
+                {{ article.category }}
+              </span>
+            </p>
+          </div>
+          <p class="mb-4">{{ article.description }}</p>
+          <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
+            <div class="mb-4">
+              <p>Read More ></p>
+            </div>
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ $content, params }) {
+    const articles = await $content('articles', params.slug)
+      .sortBy('createdAt', 'asc')
+      .fetch()
+    return {
+      articles,
+    }
+  },
+  methods: {
+    formateDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    },
+  },
+}
 </script>
 
-<style>
+<style scoped>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.meta {
+  font-size: 14px;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+h3 {
+  color: black;
 }
-
-.links {
-  padding-top: 15px;
+NuxtLink div h3:hover {
+  text-decoration: none !important;
 }
 </style>
