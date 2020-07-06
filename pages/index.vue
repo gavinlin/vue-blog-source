@@ -27,7 +27,7 @@
               </span>
             </p>
           </div>
-          <p class="mb-4">{{ article.description }}</p>
+          <p class="mb-4">{{ article.excerpt }}</p>
           <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
             <div class="mb-4">
               <p>Read More ></p>

@@ -1,3 +1,7 @@
+import remark from 'remark'
+import excerpt from 'remark-excerpt'
+import retextStringify from 'retext-stringify'
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -64,4 +68,12 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  hooks: {
+    'content:file:beforeInsert': async (document) => {
+      if (document.extension === '.md') {
+        const processed = await remark().use(excerpt).use(retextStringify).process(document.text)
+        document.excerpt = processed.contents
+      }
+    },
+  },
 }
