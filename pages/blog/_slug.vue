@@ -2,7 +2,7 @@
   <article>
     <!-- <pre>{{ article }}</pre> -->
     <app-header></app-header>
-    <div class="container">
+    <div class="container mb-4">
       <h2 class="title mb-4">{{ article.title }}</h2>
       <p class="mb-4">
         <span>
