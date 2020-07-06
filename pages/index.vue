@@ -10,7 +10,10 @@
           :key="article.slug"
           class="col-md-12 mb-4"
         >
-          <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
+          <NuxtLink
+            :to="{ name: 'blog-slug', params: { slug: article.slug } }"
+            class="titleLink"
+          >
             <div class="mb-4">
               <h3>{{ article.title }}</h3>
             </div>
@@ -66,9 +69,10 @@ export default {
   font-size: 14px;
 }
 h3 {
-  color: black;
+  color: #2d3748;
+  font-weight: bold;
 }
-NuxtLink div h3:hover {
+a.titleLink:hover {
   text-decoration: none !important;
 }
 </style>
