@@ -1,7 +1,7 @@
 ---
 title: 学习如何学习--对抗拖延症
-description: learning
 category: learning
+tags: learning
 ---
 
 ## 番茄工作法

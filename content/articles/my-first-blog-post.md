@@ -1,7 +1,7 @@
 ---
 title: First blog title
 description: Using this as description
-category: none
+tags: first second
 ---
 
 # My first blog post

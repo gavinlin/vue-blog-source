@@ -1,8 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light bg-light mb-4">
-      <a class="navbar-brand" href="#">Blog</a>
-    </nav>
+    <app-header></app-header>
     <div class="container">
       <div class="row">
         <div
@@ -20,14 +18,12 @@
           </NuxtLink>
           <div class="mb-4">
             <p class="meta">
-              <span class="mr-2">
+              <span>
                 <i class="fa fa-calendar"></i>
                 {{ formateDate(article.createdAt) }}
               </span>
-              <span>
-                <i class="fa fa-folder-o"></i>
-                {{ article.category }}
-              </span>
+              <span class="dot-divider"></span>
+              <span class="badge badge-info">#{{ article.tags }}</span>
             </p>
           </div>
           <p class="mb-4">{{ article.excerpt }}</p>
@@ -43,6 +39,7 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue'
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('articles', params.slug)
@@ -51,6 +48,9 @@ export default {
     return {
       articles,
     }
+  },
+  components: {
+    appHeader: Header,
   },
   methods: {
     formateDate(date) {
@@ -62,9 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
-}
 .meta {
   font-size: 14px;
 }

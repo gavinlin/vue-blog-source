@@ -1,0 +1,11 @@
+body {
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+}
+.dot-divider {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  color: black;
+}
+.dot-divider:after {
+  content: '\00B7';
+}
