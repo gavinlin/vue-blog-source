@@ -91,4 +91,7 @@ export default {
       ]
     }
   },
+  router: {
+    base: '/gavinlin.github.io/'
+  },
 }
