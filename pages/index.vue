@@ -43,7 +43,7 @@ import Header from '../components/Header.vue'
 export default {
   async asyncData({ $content, params }) {
     const articles = await $content('articles', params.slug)
-      .sortBy('createdAt', 'asc')
+      .sortBy('createdAt', 'desc')
       .fetch()
     return {
       articles,
