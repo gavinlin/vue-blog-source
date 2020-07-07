@@ -92,6 +92,6 @@ export default {
     }
   },
   router: {
-    base: '/gavinlin.github.io/'
+    base: '/vue-blog-source/'
   },
 }

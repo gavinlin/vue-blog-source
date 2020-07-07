@@ -13,7 +13,7 @@
     "test": "jest",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export",
-    "generate": "nuxt export && nuxt build",
+    "generate": "nuxt build && nuxt export",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
