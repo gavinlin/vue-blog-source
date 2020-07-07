@@ -2,6 +2,8 @@ import remark from 'remark'
 import excerpt from 'remark-excerpt'
 import retextStringify from 'retext-stringify'
 
+const perPage = Number(process.env.PER_PAGE)
+
 export default {
   /*
    ** Nuxt rendering mode
