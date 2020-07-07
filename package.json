@@ -14,7 +14,7 @@
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export",
     "generate": "nuxt build && nuxt export",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -t -b master -r git@github.com:gavinlin/gavinlin.github.io.git"
   },
   "dependencies": {
     "@nuxt/content": "^1.4.1",
