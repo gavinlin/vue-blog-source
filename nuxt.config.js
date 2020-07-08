@@ -91,7 +91,5 @@ export default {
       ]
     }
   },
-  router: {
-    base: '/vue-blog-source/'
-  },
 }
+
