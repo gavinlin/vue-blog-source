@@ -47,7 +47,7 @@ ordered array|N|1|1
 
 当子节点比父节点大时，需要对二叉堆作调整。基本思路是比较父节点和本节点，父节点比本节点大时交换节点数据。再比较父节点和父节点的父节点，直到顶为止。
 
-```
+```java
 private void swim(int k) {
     while (k > 1 && less(k/2, k)) {
         exch(k, k/2);
@@ -60,7 +60,7 @@ private void swim(int k) {
 
 插入数组，往往是在数组末端添加数，但是这时可能会破坏堆的性质，需要使用 swim 函数作调整
 
-```
+```java
 public void insert(Key x) {
     pq[++N] = x;
     swim(N);
@@ -73,7 +73,7 @@ public void insert(Key x) {
 
 删除节点，思路是将要删除的节点和最后一个节点交换，然后删除最后一个节点。但是这样会导致违反堆性质，所以需要使用 sink 作调整。
 
-```
+```java
 private void sink(int k) {
     while (2*k < N) {
         int j = 2*k;
@@ -85,7 +85,7 @@ private void sink(int k) {
 }
 ```
 
-```
+```java
 public Key delMax() {
     Key max = pq[1];
     exch(1, N--);
@@ -101,7 +101,7 @@ public Key delMax() {
 
 根据堆的特点，可以用来排序。第一步是要建立堆。
 
-```
+```java
 for (int k = N/2; k >= 1; k--)
     sink(a, k, N);
 ```
@@ -112,7 +112,7 @@ for (int k = N/2; k >= 1; k--)
 
 接着，就是每次把最大的数放到数组最后，然后数组大小减一，直到执行到数组头部。
 
-```
+```java
 while (N > 1) {
     exch(a, 1, N--);
     sink(a, 1, N);
@@ -130,6 +130,3 @@ heapsort 是本地排序，最差时间为 NlgN。
 - 内循环时间比 quicksort 长
 - 缓存利用率低
 - 不是稳定排序
-
-
-
