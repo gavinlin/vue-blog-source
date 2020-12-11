@@ -52,4 +52,9 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+blockquote {
+  border-left: 3px solid gray;
+  padding-left: 0.5rem;
+}
 </style>
